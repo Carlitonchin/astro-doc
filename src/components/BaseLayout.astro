@@ -4,7 +4,29 @@ import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 import { ViewTransitions } from "astro:transitions";
 const { pageTitle } = Astro.props;
+
+const anim = {
+  old: {
+    name: 'fadeIn',
+    duration: '5s',
+    easing: 'linear',
+    fillMode: 'forwards',
+  },
+  new: {
+    name: 'fadeOut',
+    duration: '5s',
+    easing: 'linear',
+    fillMode: 'backwards',
+  }
+};
+
+const myFade = {
+  forwards: anim,
+  backwards: anim,
+};
 ---
+
+
 
 <html lang="es">
   <head>
@@ -17,8 +39,8 @@ const { pageTitle } = Astro.props;
   </head>
   <body>
     <Header />
-    <h1>{pageTitle}</h1>
-    <slot />
+    <h1 transition:animate={myFade}>{pageTitle}</h1>
+    <slot transition:animate={myFade}/>
     <Footer />
   </body>
 </html>
