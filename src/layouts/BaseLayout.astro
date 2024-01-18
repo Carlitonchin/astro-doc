@@ -1,9 +1,11 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
-const {pageTitle} = Astro.props;
+import { ViewTransitions } from "astro:transitions";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+const { pageTitle } = Astro.props;
 ---
+
 <html lang="es">
   <head>
     <meta charset="utf-8" />
@@ -11,11 +13,12 @@ const {pageTitle} = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
+    <ViewTransitions />
   </head>
   <body>
     <Header />
     <h1>{pageTitle}</h1>
-  <slot/>
+    <slot />
     <Footer />
   </body>
 </html>
